@@ -32,19 +32,10 @@ function Seeker(props) {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    handleSearch(searchTerm);
+    props.handleSearch(searchTerm);
   };
 
-  function handleSearch(searchTerm) {
-    const results = data.filter((item) => {
-      const nameMatch = item.name.toLowerCase().includes(searchTerm.toLowerCase());
-      const priceMatch = item.price.toLowerCase().includes(searchTerm.toLowerCase());
-      const categoriesMatch = item.category.toLowerCase().includes(searchTerm.toLowerCase());
-      const mailMatch = item.email.toLowerCase().includes(searchTerm.toLowerCase());
-      return nameMatch || priceMatch || categoriesMatch || mailMatch;
-    });
-    setFilteredData(results);
-  }
+  
 
   return (
     <form onSubmit={handleFormSubmit} className="d-flex" role="search">
