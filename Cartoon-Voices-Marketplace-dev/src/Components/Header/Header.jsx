@@ -2,7 +2,7 @@ import Seeker from "../Seeker/Seeker";
 import "./Header.css"
 import logo from "../../assets/img/Img1.png"
 
-function Header() {
+function Header({handleSearch}) {
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -25,7 +25,7 @@ function Header() {
               </li>
               
             </ul>
-            <Seeker/>
+            <Seeker handleSearch={handleSearch}/>
           </div>
         </div>
       </nav>

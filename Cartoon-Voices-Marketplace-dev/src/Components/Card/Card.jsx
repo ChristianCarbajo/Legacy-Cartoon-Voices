@@ -14,7 +14,7 @@ function Card(props) {
             <div className="card-img ">
                 <img src={props.img} alt={props.name} width="200vh" height="200vh" />
             </div>
-            <ul class="card-body-ul">
+            <ul className="card-body-ul">
                 <h5 className="card-title">{props.name}</h5>
                 <li className="list-group-item">Categoria: {props.category}</li>
                 <li className="list-group-item">{props.price}€</li>
