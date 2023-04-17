@@ -3,7 +3,7 @@ import Card from '../Card/Card'
 import CallAxios from "../../Services/CallAxios";
 import "./CardsGroup.css"
 
-function CardsGroup({filteredData}) {
+function CardsGroup() {
 
     const [data, setData] = useState([]);
     useEffect(() => {
@@ -12,12 +12,11 @@ function CardsGroup({filteredData}) {
         });
     }, []);
 
-    const itemsToRender = filteredData.length > 0 ? filteredData : data;
 
     return (
         <div className='container'>
                     <div className="card-group w-100">
-                        {itemsToRender.map((actor) =>
+                        {data.map((actor) =>
                             <Card
                                 actor={actor}
                                 id={actor.id}

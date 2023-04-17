@@ -13,18 +13,17 @@ function Seeker(props) {
       .catch((error) => console.error(error));
   }, []);
 
-  useEffect(() => {
-    const results = data.filter((item) => {
-      const titleMatch = item.title.toLowerCase().includes(searchTerm.toLowerCase());
-      const priceMatch = item.price.toLowerCase().includes(searchTerm.toLowerCase());
-      const categoriesMatch = item.category.toLowerCase().includes(searchTerm.toLowerCase());
-      const mailMatch = item.email.toLowerCase().includes(searchTerm.toLowerCase());
-      return titleMatch || priceMatch || categoriesMatch || mailMatch;
-    });
-    setFilteredData(results);
-  }, [searchTerm, data]);
+  // useEffect(() => {
+  //   const results = data.filter((item) => {
+  //     const titleMatch = item.title.toLowerCase().includes(searchTerm.toLowerCase());
+  //     const priceMatch = item.price.toLowerCase().includes(searchTerm.toLowerCase());
+  //     const categoriesMatch = item.category.toLowerCase().includes(searchTerm.toLowerCase());
+  //     const mailMatch = item.email.toLowerCase().includes(searchTerm.toLowerCase());
+  //     return titleMatch || priceMatch || categoriesMatch || mailMatch;
+  //   });
+  //   setFilteredData(results);
+  // }, [searchTerm, data]);
 
-  const itemsToRender = filteredData.length > 0 ? filteredData : data;
 
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
@@ -46,5 +45,6 @@ function Seeker(props) {
     </form>
   );
 }
+
 
 export default Seeker;

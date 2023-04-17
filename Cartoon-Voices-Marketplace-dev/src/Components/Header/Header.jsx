@@ -25,7 +25,7 @@ function Header({handleSearch}) {
               </li>
               
             </ul>
-            <Seeker handleSearch= {handleSearch}/>
+            <Seeker />
           </div>
         </div>
       </nav>
