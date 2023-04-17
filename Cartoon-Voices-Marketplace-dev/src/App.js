@@ -7,6 +7,7 @@ import AllCards from "./Pages/AllCards/AllCards";
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js';
+import ArticlePage from "./Pages/Article/ArticlePage";
 
 
 const router = createBrowserRouter([{
@@ -24,6 +25,9 @@ const router = createBrowserRouter([{
 }, {
   path: "/cards",
   element: <AllCards />
+}, {
+  path: "/article",
+  element: <ArticlePage />
 }
 ])
 
