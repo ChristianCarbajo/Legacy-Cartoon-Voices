@@ -1,10 +1,22 @@
 import React from "react";
 import "./HeartButton.css";
+import { useState } from "react";
 
 const HeartButton = () => {
+
+    const [like, setLike] = useState(0),
+    [isLike, setIsLike] = useState(false),
+
+    onLikeButtonClick = () => {
+        setLike(like +(isLike ? - 1 : 1));
+        setIsLike(!isLike)
+    }
+
+
     return (
         <div className="favHeart">
-            <input type="checkbox" className="checkbox" id="checkbox" />
+            <p>Like {like} </p>
+            <input onClick={onLikeButtonClick} type="checkbox" className="checkbox" id="checkbox" />
             <label for="checkbox">
                 <svg id="heart-svg" viewBox="467 392 58 57" xmlns="http://www.w3.org/2000/svg">
                     <g id="Group" fill="none" fill-rule="evenodd" transform="translate(467 392)">
