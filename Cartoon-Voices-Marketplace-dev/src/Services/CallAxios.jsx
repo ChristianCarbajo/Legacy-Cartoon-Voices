@@ -14,7 +14,11 @@ const CallAxios = () => {
         return res;
     };
 
-    const createVoice = async (data) => {
+    const createVoice = async (data, type) => {
+        if(type == "comment"){
+            const res = await axios.post(`${url}/comment`, data);
+            return res;
+        }
         const res = await axios.post(`${url}`, data);
         return res;
     };
