@@ -3,9 +3,28 @@ import axios from 'axios';
 const CallAxios = () => {
 
     const url = "http://localhost:8080/voices"
-
+    const urlComments = "http://localhost:8080/voices/comment"
     const getVoices = async () => {
         const res = await axios.get(`${url}`);
+        return res.data;
+    };
+
+    const getComments = async (id) => {
+        const res = await axios.get(`${urlComments}`);
+        return res.data
+    }
+    
+    const getCommentsById = async (id) => {
+        const res = await axios.get(`${urlComments}/${id}`);
+        return res.data
+    }
+    
+    const createComment = async (data) => {
+        const res = await axios.post(`${urlComments}`, data);
+        return res.data
+    }
+    const deleteComment = async (id) => {
+        const res = await axios.delete(`${urlComments}/${id}`);
         return res.data;
     };
 
@@ -39,6 +58,11 @@ const CallAxios = () => {
         updateVoice,
         deleteVoice,
         getVoicesById,
+        getComments,
+        getCommentsById,
+        createComment,
+        deleteComment,
+        urlComments,
         url
     };
 };

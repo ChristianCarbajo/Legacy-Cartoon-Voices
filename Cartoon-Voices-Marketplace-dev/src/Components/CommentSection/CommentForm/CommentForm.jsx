@@ -1,6 +1,18 @@
 import React from 'react'
+import { useEffect, useState } from 'react';
+import CallAxios from '../../../Services/CallAxios';
 
 function CommentForm() {
+
+    const [data, setData] = useState([{}]);
+
+    useEffect(() => {
+        CallAxios().getVoices().then((data) => {
+            setData(data);
+        });
+    }, []);
+
+
     return (
         <>
         <form action="POST" >
