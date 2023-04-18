@@ -3,21 +3,32 @@ import Card from '../Card/Card'
 import CallAxios from "../../Services/CallAxios";
 import "./CardsGroup.css"
 
-function CardsGroup({filteredData}) {
+function CardsGroup() {
 
-    const [data, setData] = useState([]);
+    let [cards, setCards] = useState([])
+
     useEffect(() => {
         CallAxios().getVoices().then((data) => {
-            setData(data);
+            setCards(data);
         });
     }, []);
 
-    const itemsToRender = filteredData.length > 0 ? filteredData : data;
+    function chunk(array, size) {
+        const result = [];
+
+        for (let i = 0; i < array.length; i += size) {
+            result.push(array.slice(i, i + size));
+        }
+
+        return result;
+    }
 
     return (
         <div className='container'>
+            {chunk(cards, 4).map((cardGroup, index) =>
+                <div className="row mb-3 " key={index}>
                     <div className="card-group w-100">
-                        {itemsToRender.map((actor) =>
+                        {cardGroup.map((actor) =>
                             <Card
                                 actor={actor}
                                 id={actor.id}
@@ -33,6 +44,9 @@ function CardsGroup({filteredData}) {
                         )}
                     </div>
                 </div>
- )}
+            )}
+        </div>
+    )
+}
 
 export default CardsGroup
