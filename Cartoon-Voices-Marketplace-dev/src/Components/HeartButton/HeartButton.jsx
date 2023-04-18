@@ -1,22 +1,54 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import "./HeartButton.css";
-import { useState } from "react";
 
-const HeartButton = () => {
 
-    const [like, setLike] = useState(0),
-    [isLike, setIsLike] = useState(false),
+const HeartButton = ({postId}) => {
 
-    onLikeButtonClick = () => {
-        setLike(like +(isLike ? - 1 : 1));
-        setIsLike(!isLike)
-    }
+    // const [like, setLike] = useState(0),
+    // [isLike, setIsLike] = useState(false),
+
+    // onLikeButtonClick = () => {
+    //     setLike(like +(isLike ? - 1 : 1));
+    //     setIsLike(!isLike)
+    // }
+
+
+    const [likes, setLikes] = useState(0);
+    const [liked, setLiked] = useState(false);
+
+    useEffect(() => {
+        getLikes();
+    }, []);
+
+    const getLikes = () => {
+        axios.get(`/api/likes/${postId}`)
+            .then(response => {
+                setLikes(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    };
+
+    const handleLike = () => {
+        const like = { postId: postId};
+
+        axios.post('/api/likes/like', like)
+            .then(response => {
+                setLikes(likes + 1);
+                setLiked(true);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    };
 
 
     return (
         <div className="favHeart">
-            <p>Like {like} </p>
-            <input onClick={onLikeButtonClick} type="checkbox" className="checkbox" id="checkbox" />
+            <p>Like {likes} </p>
+            <input disabled={liked} onClick={handleLike} type="checkbox" className="checkbox" id="checkbox" />
             <label for="checkbox">
                 <svg id="heart-svg" viewBox="467 392 58 57" xmlns="http://www.w3.org/2000/svg">
                     <g id="Group" fill="none" fill-rule="evenodd" transform="translate(467 392)">
@@ -63,5 +95,6 @@ const HeartButton = () => {
         </div>
     );
 };
+
 
 export default HeartButton;
