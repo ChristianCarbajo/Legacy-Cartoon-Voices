@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import './Card.css'
-
+import { useNavigate } from 'react-router-dom';
 
 function Card(props) {
     
     const id = props.id;
     const editUrl = `/edit/${id}`;
-    
+    let navigate = useNavigate();
 
     return (
-        <div className="card " style={{ width: "18rem", height:"50vh" }} >
+        <div className="card " style={{ width: "18rem", height:"50vh" }} onClick = { ()=> {navigate('/article',{state:{id}})}} >
             <div className="card-img ">
                 <img src={props.img} alt={props.name} width="200vh" height="200vh" />
             </div>
