@@ -10,9 +10,9 @@ function Card(props) {
     let navigate = useNavigate();
 
     return (
-        <div className="card " style={{ width: "18rem", height:"50vh" }} onClick = { ()=> {navigate('/article',{state:{id}})}} >
+        <div className="card " style={{ width: "18rem", height:"65vh" }} onClick = { ()=> {navigate('/article',{state:{id}})}} >
             <div className="card-img ">
-                <img src={props.img} alt={props.name} width="200vh" height="200vh" />
+                <img className="general-img"src={props.img} alt={props.name} width="200vh" height="200vh" />
             </div>
             <ul className="card-body-ul">
                 <h5 className="card-title">{props.name}</h5>

@@ -7,3 +7,6 @@ margin-top: 5vh;
 .carousel-control-next-icon{
     background: blueviolet;
 }
+#card-img{
+    border-radius: 160px;
+}

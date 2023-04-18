@@ -2,21 +2,28 @@ import React, { useEffect, useState } from 'react'
 import Card from '../Card/Card'
 import CallAxios from "../../Services/CallAxios";
 import "./CardsGroup.css"
+import { useLocation } from 'react-router-dom';
 
-function CardsGroup() {
+function CardsGroup({filteredData}) {
 
     const [data, setData] = useState([]);
+    
     useEffect(() => {
         CallAxios().getVoices().then((data) => {
             setData(data);
         });
     }, []);
 
-
+let itemsToRender = filteredData.length > 0 ? filteredData : data;
+console.info(itemsToRender)
+    
     return (
         <div className='container'>
+                <div className="row mb-3 ">
                     <div className="card-group w-100">
-                        {data.map((actor) =>
+
+                        {itemsToRender.length > 0 ?
+                        itemsToRender.map((actor) =>(
                             <Card
                                 actor={actor}
                                 id={actor.id}
@@ -29,9 +36,12 @@ function CardsGroup() {
                                 key={actor.id}
                                 className="mr-3 mb-3"
                             />
-                        )}
+                        )): <h3>No hay voces</h3>
+                    }
                     </div>
                 </div>
- )}
+        </div>
+    )
+}
 
 export default CardsGroup
