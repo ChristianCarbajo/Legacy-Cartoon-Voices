@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import './Card.css'
 import HeartButton from "../HeartButton/HeartButton";
 
-
 function Card(props) {
     
     const id = props.id;
@@ -24,7 +23,6 @@ function Card(props) {
                 </ul>
                 <HeartButton/>
             </div>
-            
             <div className="card-body-button">
                 <Link to="/contact">
                     <button type="button" className="btn btn-secondary btn-sm m-1">Contratar</button>
