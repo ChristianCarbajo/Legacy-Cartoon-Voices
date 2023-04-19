@@ -1,13 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Comment from './Comment/Comment'
 import CommentForm from './CommentForm/CommentForm'
+import CallAxios from '../../Services/CallAxios';
 
 function CommentSection() {
-    let data = [{
+    const [data, setData] = useState([{
         name: "Salah",
         email: "salah@salah.com",
         comment: "Some quick example text to build on the card title and make up the bulk of the card's content."
-    }]
+    }]);
+
+    useEffect(() => {
+        CallAxios().getComments().then((data) => {
+            // setData(data);
+        });
+    }, []);
+
     return (
             <div className="container">
                 <div className="row text-center">

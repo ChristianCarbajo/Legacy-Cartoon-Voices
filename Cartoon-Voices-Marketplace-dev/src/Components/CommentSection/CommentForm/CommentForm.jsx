@@ -4,42 +4,46 @@ import CallAxios from '../../../Services/CallAxios';
 
 function CommentForm() {
 
-    const [data, setData] = useState([{}]);
+    let [item, setItem] = useState([{}])
 
-    useEffect(() => {
-        CallAxios().getVoices().then((data) => {
-            setData(data);
-        });
-    }, []);
+    function handleChange(event) {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+        let temp_item = item
+        temp_item[name] = value
+        setItem(temp_item)
+        console.log(item)
+    }
+
+    
+
+    function handleSumbit(event) {
+        event.preventDefault();
+        CallAxios().createComment(item)
+    }
 
 
     return (
         <>
-        <form action="POST" >
-           <p>Username</p> <input type="text" />
+            <form onSubmit={handleSumbit} action='POST'>
+                <div class="form-group">
+                    <label for="exampleInputName1">Nombre:</label>
+                    <input onChange={handleChange} type="userName" class="form-control" id="exampleInputName1" placeholder="Enter name" required />
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email:</label>
+                    <input onChange={handleChange} type="email" class="form-control" id="exampleInputPassword1" aria-describedby="emailHelp" placeholder="Email" required />
+                    <small id="emailHelp" class="form-text text-muted">No compartimos el email con ninguna entidad <span className='text-decoration-line-through'>que no pague</span>.</small>
 
-           <p>Comentario</p>
-           <textarea rows="5" cols="60"></textarea>
-           <button >Enviar</button>
-        </form>
-        {/* <form>
-            <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
-        
-            </div>
+                </div>
+                <div class="form-group mb-2">
+                    <label for="exampleInputComment1">Comentario:</label>
+                    <textarea onChange={handleChange} type="comment" class="form-control" id="exampleInputPassword1" placeholder="Comment" required />
+                </div>
 
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form> */}
+                <button type="submit" class="btn btn-primary mb-4">Submit</button>
+            </form>
         </>
     )
 }

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link, Navigate } from 'react-router-dom'
 import './Card.css'
 import { useNavigate } from 'react-router-dom';
+import HeartButton from '../HeartButton/HeartButton';
 
 function Card(props) {
     
@@ -10,8 +11,8 @@ function Card(props) {
     let navigate = useNavigate();
 
     return (
-        <div className="card " style={{ width: "18rem", height:"65vh" }} onClick = { ()=> {navigate('/article',{state:{id}})}} >
-            <div className="card-img ">
+        <div className="card " style={{ width: "18rem", height:"65vh" }} >
+            <div className="card-img " onClick = { ()=> {navigate('/article',{state:{id}})}}>
                 <img className="general-img"src={props.img} alt={props.name} width="200vh" height="200vh" />
             </div>
             <ul className="card-body-ul">
@@ -19,6 +20,7 @@ function Card(props) {
                 <li className="list-group-item">Categoria: {props.category}</li>
                 <li className="list-group-item">{props.price}€</li>
                 <li className="list-group-item">email: {props.email}</li>
+                <HeartButton />
             </ul>
             <div className="card-body-button">
                 <Link to="/contact">
