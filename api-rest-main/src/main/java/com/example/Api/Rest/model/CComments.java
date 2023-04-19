@@ -16,12 +16,14 @@ public class CComments {
     @Column(columnDefinition = "LONGTEXT")
     private String comment;
     private String userName;
+    private String email;
 
 
-    public CComments(Long id, String userName, String comment) {
+    public CComments(Long id, String userName, String comment, String email) {
         this.comment = comment;
         this.id = id;
         this.userName = userName;
+        this.email=email;
     }
 
     public String getuserName() {
@@ -45,6 +47,14 @@ public class CComments {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
 
