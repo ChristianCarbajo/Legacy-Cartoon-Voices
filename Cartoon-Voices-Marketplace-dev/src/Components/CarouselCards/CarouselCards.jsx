@@ -19,7 +19,7 @@ function CarouselCards() {
                         className={index === 0 ? "carousel-item active" : "carousel-item"}
                         key={card.id}
                     >
-                        <img className="d-block" src={card.urlImg} alt={card.name} style={{ width: "60vh", height: "40vh", margin: "auto" }} />
+                        <img id="card-img" className="d-block" src={card.urlImg} alt={card.name} style={{ width: "45vh", height: "40vh", margin: "auto" }} />
                         <div style={{ background: "white", opacity: 0.5 }} className="carousel-caption d-none d-md-block">
                             <h2 style={{ color: "black", fontWeight: "700" }}>{card.name}</h2>
                             <h4 style={{ color: "black" }}>{card.email}</h4>

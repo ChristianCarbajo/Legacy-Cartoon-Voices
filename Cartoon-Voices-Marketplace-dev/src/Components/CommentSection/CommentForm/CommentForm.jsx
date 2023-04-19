@@ -1,8 +1,28 @@
 import React from 'react'
+import { useEffect, useState } from 'react';
+import CallAxios from '../../../Services/CallAxios';
 
 function CommentForm() {
+
+    const [data, setData] = useState([{}]);
+
+    useEffect(() => {
+        CallAxios().getVoices().then((data) => {
+            setData(data);
+        });
+    }, []);
+
+
     return (
-        <form>
+        <>
+        <form action="POST" >
+           <p>Username</p> <input type="text" />
+
+           <p>Comentario</p>
+           <textarea rows="5" cols="60"></textarea>
+           <button >Enviar</button>
+        </form>
+        {/* <form>
             <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
@@ -11,13 +31,16 @@ function CommentForm() {
             <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
                 <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+        
             </div>
+
             <div class="form-check">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1" />
                     <label class="form-check-label" for="exampleCheck1">Check me out</label>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+        </form> */}
+        </>
     )
 }
 

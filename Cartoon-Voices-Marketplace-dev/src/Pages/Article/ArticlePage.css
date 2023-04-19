@@ -1,0 +1,21 @@
+.article-item{
+    list-style: none;
+}
+.article-div{
+    display: flex;
+    flex-direction: row;
+    margin: 10vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.article-title{
+    font-size: 8vh;
+}
+
+
+
+#price{
+    font-weight: bold;
+    align-items: center;
+}
