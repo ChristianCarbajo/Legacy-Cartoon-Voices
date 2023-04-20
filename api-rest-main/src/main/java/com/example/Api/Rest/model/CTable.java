@@ -14,7 +14,7 @@ public class CTable {
     @JoinColumn(name="voice_id")
     private CVoice cVoice;
 
-    @Column(name="comment")
-    private  String comment;
+    @Column(name = "comment_id")
+    private Long commentId;
 
 }

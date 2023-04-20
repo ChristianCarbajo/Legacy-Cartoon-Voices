@@ -51,6 +51,7 @@ const CallAxios = () => {
         const res = await axios.delete(`${url}/${id}`);
         return res.data;
     };
+    
 
     return {
         getVoices,
