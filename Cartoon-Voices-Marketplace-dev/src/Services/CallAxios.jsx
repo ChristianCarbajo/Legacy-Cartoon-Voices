@@ -21,7 +21,7 @@ const CallAxios = () => {
     
     const createComment = async (data) => {
         const res = await axios.post(`${urlComments}`, data);
-        return res.data
+        return res
     }
     const deleteComment = async (id) => {
         const res = await axios.delete(`${urlComments}/${id}`);

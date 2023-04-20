@@ -6,20 +6,45 @@ function CommentForm() {
 
     const [data, setData] = useState([{}]);
 
+    let [item, setItem] = useState([{userName: "", comment:"", email:""}]);
     useEffect(() => {
         CallAxios().getVoices().then((data) => {
             setData(data);
         });
     }, []);
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        CallAxios().createComment(item)
+        };
+
+
+        function handleChange(event) {
+            const target = event.target;
+            const value = target.value;
+            console.info(target.value)
+            const name = target.name;
+            
+             let temp_item = item;
+            
+             temp_item[name]=value;
+
+            setItem(temp_item);
+         
+        }
+
+        console.info(item)
+
+
 
     return (
         <>
-        <form action="POST" >
-           <p>Username</p> <input type="text" />
+        <form action="POST" onSubmit={handleSubmit} >
+           <p>Username</p> <input name='userName' type="text" onChange={handleChange}/>
+           <p>Email</p> <input name='email' type="email" onChange={handleChange}/>
 
            <p>Comentario</p>
-           <textarea rows="5" cols="60"></textarea>
+           <textarea type='text' name='comment'rows="5" cols="60" onChange={handleChange}></textarea>
            <button >Enviar</button>
         </form>
         {/* <form>
