@@ -56,6 +56,12 @@ public class CComments {
     public void setEmail(String email) {
         this.email = email;
     }
+
+
+
+    @ManyToOne
+    @JoinColumn(name = "voice_id")
+    private CVoice voice;
 }
 
 
