@@ -3,7 +3,7 @@ import axios from 'axios';
 const CallAxios = () => {
 
     const url = "http://localhost:8080/voices"
-    const urlComments = "http://localhost:8080/voices/comment"
+    const urlComments = "http://localhost:8080/comment"
     const getVoices = async () => {
         const res = await axios.get(`${url}`);
         return res.data;

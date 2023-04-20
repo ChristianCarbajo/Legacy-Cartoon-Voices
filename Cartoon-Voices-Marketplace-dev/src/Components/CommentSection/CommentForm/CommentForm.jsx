@@ -4,49 +4,34 @@ import CallAxios from '../../../Services/CallAxios';
 
 function CommentForm() {
 
-    const [data, setData] = useState([{}]);
 
-    let [item, setItem] = useState([{userName: "", comment:"", email:""}]);
-    useEffect(() => {
-        CallAxios().getVoices().then((data) => {
-            setData(data);
-        });
-    }, []);
+    const [userName, setUserName] = useState('');  
+    const [email, setEmail] = useState('');
+    const [comment, setComment] = useState('');
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        CallAxios().createComment(item)
+
+
+    const handleSubmit = () => {
+        const data = {
+            name:userName,
+            email: email,
+           comment: comment
         };
 
-
-        function handleChange(event) {
-            const target = event.target;
-            const value = target.value;
-            console.info(target.value)
-            const name = target.name;
-            
-             let temp_item = item;
-            
-             temp_item[name]=value;
-
-            setItem(temp_item);
-         
-        }
-
-        console.info(item)
+        CallAxios().createComment(data)
 
 
 
     return (
         <>
-        <form action="POST" onSubmit={handleSubmit} >
-           <p>Username</p> <input name='userName' type="text" onChange={handleChange}/>
-           <p>Email</p> <input name='email' type="email" onChange={handleChange}/>
-
+        <form action="POST" onSubmit={handleSubmit}>
+           <p>Username</p> <input name='userName' type="text" onChange={(e) => setUserName(e.target.value)}/>
+           <p>Email</p><input name='email' type="email" onChange={(e) => setEmail(e.target.value)}/>
            <p>Comentario</p>
-           <textarea type='text' name='comment'rows="5" cols="60" onChange={handleChange}></textarea>
-           <button >Enviar</button>
+           <textarea type='text' name='comment'rows="5" cols="60" onChange={(e) => setComment(e.target.value)}></textarea>
+           <button>Enviar</button>
         </form>
+
         {/* <form>
             <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>
@@ -67,6 +52,7 @@ function CommentForm() {
         </form> */}
         </>
     )
+}
 }
 
 export default CommentForm
