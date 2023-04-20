@@ -6,7 +6,7 @@ function Comment({item}) {
             <div className="d-flex justify-content-center">
                 <div class="card" style={{ width: "180rem" }}>
                     <div class="card-body">
-                        <h5 class="card-title">{item.name}</h5>
+                        <h5 class="card-title">{item.userName}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">{item.email}</h6>
                         <p class="card-text">{item.comment}</p>
                         <a href="#" class="card-link">Report</a>

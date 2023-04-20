@@ -4,7 +4,7 @@ import CallAxios from '../../../Services/CallAxios';
 
 function CommentForm() {
 
-    let [item, setItem] = useState([{}])
+    let [item, setItem] = useState({})
 
     function handleChange(event) {
         const target = event.target;
@@ -20,29 +20,30 @@ function CommentForm() {
 
     function handleSumbit(event) {
         event.preventDefault();
+        console.log(item);
         CallAxios().createComment(item)
     }
 
 
     return (
         <>
-            <form onSubmit={handleSumbit} action='POST'>
-                <div class="form-group">
+            <form onSubmit={handleSumbit} method='post'>
+                <div className="form-group">
                     <label for="exampleInputName1">Nombre:</label>
-                    <input onChange={handleChange} type="userName" class="form-control" id="exampleInputName1" placeholder="Enter name" required />
+                    <input onChange={handleChange} type="name" name='userName' className="form-control" id="exampleInputName1" placeholder="Enter name" required />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                     <label for="exampleInputEmail1">Email:</label>
-                    <input onChange={handleChange} type="email" class="form-control" id="exampleInputPassword1" aria-describedby="emailHelp" placeholder="Email" required />
+                    <input onChange={handleChange} type="email" name='email' className="form-control" id="exampleInputPassword1" aria-describedby="emailHelp" placeholder="Email" required />
                     <small id="emailHelp" class="form-text text-muted">No compartimos el email con ninguna entidad <span className='text-decoration-line-through'>que no pague</span>.</small>
 
                 </div>
-                <div class="form-group mb-2">
+                <div className="form-group mb-2">
                     <label for="exampleInputComment1">Comentario:</label>
-                    <textarea onChange={handleChange} type="comment" class="form-control" id="exampleInputPassword1" placeholder="Comment" required />
+                    <textarea onChange={handleChange} type="comment" name='comment' className="form-control" id="exampleInputPassword1" placeholder="Comment" required />
                 </div>
 
-                <button type="submit" class="btn btn-primary mb-4">Submit</button>
+                <button type="submit" className="btn btn-primary mb-4">Submit</button>
             </form>
         </>
     )

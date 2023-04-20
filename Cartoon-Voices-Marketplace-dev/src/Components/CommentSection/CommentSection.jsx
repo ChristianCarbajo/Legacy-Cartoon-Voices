@@ -12,7 +12,8 @@ function CommentSection() {
 
     useEffect(() => {
         CallAxios().getComments().then((data) => {
-            // setData(data);
+            setData(data);
+            console.log(data[0])
         });
     }, []);
 
