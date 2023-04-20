@@ -1,17 +1,13 @@
 package com.example.Api.Rest.controller;
-
-
 import com.example.Api.Rest.model.CComments;
-import com.example.Api.Rest.model.CVoice;
 import com.example.Api.Rest.services.CCommentsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/voices/comment")
+@RequestMapping("/comment")
 @CrossOrigin("*")
 public class CCommentsController {
 
@@ -24,7 +20,7 @@ public class CCommentsController {
     }
 
     @PostMapping()
-    public CComments saveVoice(@RequestBody CComments commentsModel) {
+    public CComments saveComment(@RequestBody CComments commentsModel) {
         return cCommentsService.saveComment(commentsModel);
     }
 
@@ -36,9 +32,4 @@ public class CCommentsController {
     @DeleteMapping(path = "/{id}")
     public String deleteComment(@PathVariable Long id) { return cCommentsService.deleteCommentsById(id);
     }
-
-
-
-
-
 }

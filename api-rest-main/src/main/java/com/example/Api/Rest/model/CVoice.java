@@ -1,6 +1,8 @@
 package com.example.Api.Rest.model;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+
 @Entity
 @Table(name = "voices")
 public class CVoice {
@@ -71,4 +73,7 @@ public class CVoice {
         this.category = category;
         this.urlImg = urlImg;
     }
+
+    @OneToMany(mappedBy = "voice")
+    private ArrayList<CComments> comment;
 }
