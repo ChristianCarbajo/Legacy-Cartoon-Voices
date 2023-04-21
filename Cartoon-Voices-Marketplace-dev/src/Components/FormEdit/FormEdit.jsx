@@ -18,7 +18,7 @@ export default function FormEdit() {
     const handleUpdate = (id) => {
         CallAxios().getVoicesById(id)
             .then(response => {
-                setVoice(response.data);
+                setVoice(response);
             })
             .catch(error => {
                 console.error(error);
@@ -31,12 +31,10 @@ export default function FormEdit() {
     const handleDelete = (id) => {
         CallAxios().deleteVoice(id)
         alert("la publicación ha sido eliminada")
-        
     }
 
     useEffect(() => {
         handleUpdate(id)
-
     });
     const handleSubmit = (event) => {
         const data = {
@@ -49,6 +47,7 @@ export default function FormEdit() {
         }
 
         CallAxios().updateVoice(data)
+        alert("la publicación ha sido actualizada")
 
     }
     return (

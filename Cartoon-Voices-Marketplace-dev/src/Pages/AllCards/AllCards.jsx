@@ -15,7 +15,6 @@ export default function AllCards() {
   useEffect(() => {
       CallAxios().getVoices()
       .then((data) => {
-        console.log(data); 
         setData(data);
       })
       .catch((error) => console.error(error));

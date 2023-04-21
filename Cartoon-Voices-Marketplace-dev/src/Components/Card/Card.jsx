@@ -20,7 +20,6 @@ function Card(props) {
                 <li className="list-group-item">Categoria: {props.category}</li>
                 <li className="list-group-item">{props.price}€</li>
                 <li className="list-group-item">email: {props.email}</li>
-                <HeartButton />
             </ul>
             <div className="card-body-button">
                 <Link to="/contact">

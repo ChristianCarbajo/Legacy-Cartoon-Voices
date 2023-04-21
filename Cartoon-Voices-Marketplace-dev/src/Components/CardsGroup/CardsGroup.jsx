@@ -15,12 +15,11 @@ function CardsGroup({filteredData}) {
     }, []);
 
 let itemsToRender = filteredData.length > 0 ? filteredData : data;
-console.info(itemsToRender)
     
     return (
         <div className='container'>
                 <div className="row mb-3 ">
-                    <div className="card-group w-100">
+                    <div className="card-group w-100 d-flex align-items-center flex-column my-4">
 
                         {itemsToRender.length > 0 ?
                         itemsToRender.map((actor) =>(

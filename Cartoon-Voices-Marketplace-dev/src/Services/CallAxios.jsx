@@ -51,7 +51,16 @@ const CallAxios = () => {
         const res = await axios.delete(`${url}/${id}`);
         return res.data;
     };
+
+    const getLikes = async (id) => {
+        const res = await axios.post(`/api/like/${id}`)
+        return res.data;
+    };
     
+    const postLikes = async (like, id) => {
+        const res = await axios.post(`/api/like/${id}`, like)
+        return res;
+    }
 
     return {
         getVoices,
@@ -64,7 +73,9 @@ const CallAxios = () => {
         createComment,
         deleteComment,
         urlComments,
-        url
+        url,
+        getLikes,
+        postLikes
     };
 };
 

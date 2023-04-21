@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 import CallAxios from '../../Services/CallAxios'
 import { useLocation } from 'react-router-dom'
 import './ArticlePage.css'
+import HeartButton from '../../Components/HeartButton/HeartButton'
 
 function ArticlePage() {
   const [data, setData] = useState([{}]);
@@ -17,7 +18,6 @@ function ArticlePage() {
         setData(data);
     });
 }, []);
-console.info(data)
   return (
     <div>
       <Header />
@@ -29,12 +29,14 @@ console.info(data)
           </div>
           
         <div className='data-div'>
+          
         <ul className="card-body-ul">
           <h5 className="article-title">{data.name}</h5>
           <hr></hr>
           <li className="article-item" id='category'>Categoria: {data.category}</li>
           <li className="article-item" id='price'>{data.price}€</li>
           <li className="article-item" id='email'>Email: {data.email}</li>
+          <HeartButton />
           </ul>
         </div>
         </div>

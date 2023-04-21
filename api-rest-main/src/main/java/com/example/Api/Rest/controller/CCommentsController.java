@@ -23,7 +23,7 @@ public class CCommentsController {
     public ArrayList<CCommentView> getComment() {
         ArrayList<CComments> comments = cCommentsService.getComment();
         ArrayList<CCommentView> commentView = new ArrayList<CCommentView>();
-        for(int i = 0; i < comments.size(); i++){
+        for(int i = 0; i < comments.size(); i++) {
             CComments comment = comments.get(i);
             CCommentView newView = new CCommentView(comment.getComment(), comment.getUserName(), comment.getEmail());
             commentView.add(newView);
@@ -34,7 +34,6 @@ public class CCommentsController {
     @PostMapping(path = "/{id}")
     public CCommentView saveComment(@RequestBody CComments commentsModel, @PathVariable Long id ) {
         CVoice existingVoice = cVoiceService.getVoiceById(id).orElse(null);
-        System.out.println(existingVoice);
         commentsModel.setVoice(existingVoice);
         cCommentsService.saveComment(commentsModel);
         CCommentView newView = new CCommentView(commentsModel.getComment(), commentsModel.getUserName(), commentsModel.getEmail());
