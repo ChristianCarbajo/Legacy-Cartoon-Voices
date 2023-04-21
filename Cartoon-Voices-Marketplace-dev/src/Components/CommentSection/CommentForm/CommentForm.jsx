@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react';
 import CallAxios from '../../../Services/CallAxios';
 import { Link } from 'react-router-dom';
-function CommentForm() {
+function CommentForm({voiceId}) {
 
     let [item, setItem] = useState({})
 
@@ -13,15 +13,20 @@ function CommentForm() {
         let temp_item = item
         temp_item[name] = value
         setItem(temp_item)
-        console.log(item)
     }
 
     
 
     function handleSumbit(event) {
         event.preventDefault();
-        console.log(item);
-        CallAxios().createComment(item)
+        const comment = {
+            userName: item.userName,
+            email: item.email,
+            comment: item.comment
+        }
+        CallAxios().createComment(comment, voiceId)
+        .then( ()=> window.location.reload() )
+
     }
 
 
@@ -41,7 +46,6 @@ function CommentForm() {
                     <label for="exampleInputComment1">Comentario:</label>
                     <textarea onChange={handleChange} type="comment" name='comment' className="form-control" id="exampleInputPassword1" placeholder="Comment" required />
                 </div>
-
                 <button type="submit" className="btn btn-primary mb-4">Submit</button>
             </form>
         </>

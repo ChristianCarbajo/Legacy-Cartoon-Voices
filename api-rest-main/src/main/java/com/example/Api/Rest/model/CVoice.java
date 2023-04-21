@@ -2,6 +2,7 @@ package com.example.Api.Rest.model;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "voices")
@@ -16,6 +17,8 @@ public class CVoice {
     private String category;
     @Column(columnDefinition = "LONGTEXT")
     private String urlImg;
+    @OneToMany(mappedBy = "voice")
+    private List<CComments> comments;
 
     public String getEmail() {
         return email;
@@ -64,6 +67,13 @@ public class CVoice {
     public void setName(String name) {
         this.name = name;
     }
+    public List<CComments> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<CComments> comments) {
+        this.comments = comments;
+    }
 
     public CVoice(Long id, String name, String email, int price, String category, String urlImg) {
         this.id = id;
@@ -74,6 +84,4 @@ public class CVoice {
         this.urlImg = urlImg;
     }
 
-    @OneToMany(mappedBy = "voice")
-    private ArrayList<CComments> comment;
 }

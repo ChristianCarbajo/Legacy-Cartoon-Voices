@@ -3,7 +3,7 @@ import Comment from './Comment/Comment'
 import CommentForm from './CommentForm/CommentForm'
 import CallAxios from '../../Services/CallAxios';
 
-function CommentSection() {
+function CommentSection({voiceId}) {
     const [data, setData] = useState([{
         name: "Salah",
         email: "salah@salah.com",
@@ -11,9 +11,8 @@ function CommentSection() {
     }]);
 
     useEffect(() => {
-        CallAxios().getComments().then((data) => {
+        CallAxios().getCommentsById(voiceId).then((data) => {
             setData(data);
-            console.log(data[0])
         });
     }, []);
 
@@ -29,7 +28,7 @@ function CommentSection() {
                 {data.map((item) => 
                     <Comment item={item}/>
                 )}
-                <CommentForm />
+                <CommentForm voiceId={voiceId}/>
             </div>
     )
 }

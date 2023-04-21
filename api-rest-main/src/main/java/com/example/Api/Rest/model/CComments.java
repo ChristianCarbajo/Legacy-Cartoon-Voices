@@ -19,6 +19,12 @@ public class CComments {
     private String email;
 
 
+
+    @ManyToOne
+    @JoinColumn(name = "voice_id")
+    private CVoice voice;
+
+
     public CComments(Long id, String userName, String comment, String email) {
         this.comment = comment;
         this.id = id;
@@ -26,11 +32,11 @@ public class CComments {
         this.email=email;
     }
 
-    public String getuserName() {
+    public String getUserName() {
         return userName;
     }
 
-    public void setuserName(String userName) {
+    public void setUserName(String userName) {
         this.userName = userName;
     }
 
@@ -57,11 +63,15 @@ public class CComments {
         this.email = email;
     }
 
+    public CVoice getVoice() {
+        return voice;
+    }
+
+    public void setVoice(CVoice voice) {
+        this.voice = voice;
+    }
 
 
-    @ManyToOne
-    @JoinColumn(name = "voice_id")
-    private CVoice voice;
 }
 
 

@@ -39,10 +39,7 @@ console.info(data)
         </div>
         </div>
           
-
-        
-
-        <CommentSection />
+        <CommentSection voiceId={idState}/>
     </div>
   )
 }

@@ -19,8 +19,8 @@ const CallAxios = () => {
         return res.data
     }
     
-    const createComment = async (data) => {
-        const res = await axios.post(`${urlComments}`, data);
+    const createComment = async (commentData, voiceId) => {
+        const res = await axios.post(`${urlComments}/${voiceId}`, commentData);
         return res
     }
     const deleteComment = async (id) => {
